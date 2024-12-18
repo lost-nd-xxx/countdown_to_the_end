@@ -1,0 +1,4 @@
+charset,UTF-8
+type,ghost
+name,終末までのカウントダウン
+directory,lnx_countdown_to_the_end

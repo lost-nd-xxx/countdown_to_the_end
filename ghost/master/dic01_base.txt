@@ -1,0 +1,140 @@
+
+＊OnFirstBoot
+＄c_はじまりのとき	（現在年）,1,1,0,0,0
+＄c_おしまいのとき	（calc,（現在年）+1）,1,1,0,0,0
+\![raise,描画更新]
+
+＠テーマ切り替え	（t_テーマ切り替え）==1
+\![bind,テーマ,（when,（t_テーマ）==0,ライト,ダーク）,1]φ
+（set,t_テーマ切り替え,0）
+＠テーマ切り替え	（t_テーマ切り替え）==0
+（nop,）
+
+＊OnBoot
+＞描画更新
+＊OnWindowStateRestore
+＞描画更新
+＊OnShellChanged
+＞描画更新
+＊OnMinuteChange
+＞描画更新
+＊OnHourTimeSignal
+＞描画更新
+
+
+
+＊0つつかれ
+＄全タイマ解除	実行
+：\i[9999]いつ終わる？(1/4)\![open,dateinput,おしまい１,0,（zen2han,（現在年））,（zen2han,（現在月））,（zen2han,（現在日））]
+
+＊おしまい１を教えてもらった
+＄_tmp1	（R1）
+：いつ終わる？(2/4)\![open,timeinput,おしまい２,0,（zen2han,（現在時））,（zen2han,（現在分））,（zen2han,（現在秒））]
+
+＊おしまい２を教えてもらった
+＄_tmp1	（_tmp1）,（R1）
+：いつ始まった？(3/4)\![open,dateinput,はじまり１,0,（zen2han,（現在年））,（zen2han,（現在月））,（zen2han,（現在日））]
+
+＊はじまり１を教えてもらった
+＄_tmp2	（R1）
+：いつ始まった？(4/4)\![open,timeinput,はじまり２,0,（zen2han,（現在時））,（zen2han,（現在分））,（zen2han,（現在秒））]
+
+＊はじまり２を教えてもらった
+＄_tmp2	（_tmp2）,（R1）
+＄_tmp3	（call,UNIX時間,（_tmp1）,（c_timeDifference））
+＄_tmp4	（call,UNIX時間,（_tmp2）,（c_timeDifference））
+＞もう終わっとる	（calc,（_tmp3）-（_tmp4））<=0
+＞遠すぎ	（calc_float,(（_tmp3）-（_tmp4）)>99999999）==1
+＄c_おしまいのとき	（_tmp1）
+＄c_はじまりのとき	（_tmp2）
+＄_tmp1	
+＄_tmp2	
+＄_tmp3	
+＄_tmp4	
+：終わるんだね
+\f[color,disable](設定が更新されました)\x
+＞描画更新
+
+＊もう終わっとる
+：もう終わっているね
+\f[color,disable](設定は更新されませんでした)\x
+＞描画更新
+
+＊遠すぎ
+：少し遠すぎるね
+\f[color,disable](設定は更新されませんでした)\x
+＞描画更新
+
+＊OnUserInput
+＞（R0）を教えてもらった
+＊OnUserInputCancel
+＄_tmp1	
+＄_tmp2	
+＄_tmp3	
+＄_tmp4	
+＞描画更新
+
+
+
+＊描画更新
+＄描画更新タイマ	1
+＄c_現在の秒	（call,UNIX時間,（現在年）,（現在月）,（現在日）,（現在時）,（現在分）,（現在秒）,（c_timeDifference））
+＄c_はじまりの秒	（call,UNIX時間,（c_はじまりのとき）,（c_timeDifference））
+＄c_おしまいの秒	（call,UNIX時間,（c_おしまいのとき）,（c_timeDifference））
+＄c_基準の秒	（calc,（c_おしまいの秒）-（c_はじまりの秒））
+＄c_残りの秒	（calc,（c_おしまいの秒）-（c_現在の秒））
+＄c_パーセント	（calc_float,（c_残りの秒）*100/（c_基準の秒））
+＄c_パーセント	（sprintf,%1.1f,（c_パーセント））
+＄c_パーセント	（sprintf,% 5s,（c_パーセント））
+＄c_残りの秒	（sprintf,% 8d,（c_残りの秒））
+＞描画更新_おしめえです	（c_残りの秒）<0
+\1\s[10]\0\s[0]φ
+（テーマ切り替え）φ
+（times、3、（when、（equal、（at、（c_パーセント）、（C0））、 ）==0、\i[1（calc,（C0）+1）（at,（c_パーセント）,（C0））]））φ
+\i[14（at,（c_パーセント）,4）]φ
+（times、7、（when、（equal、（at、（c_残りの秒）、（C0））、 ）==0、\i[2（calc,（C0）+1）（at,（c_残りの秒）,（C0））]））φ
+\i[28（at,（c_残りの秒）,7）]
+
+＊描画更新_おしめえです
+＄全タイマ解除	実行
+\1\s[10]\0\s[1]（テーマ切り替え）
+
+
+
+＊OnNotifyInternationalInfo
+＄c_timeDifference	（calc,（R0）*60）
+
+＠UNIX時間
+（
+	set,__py,（calc,（A0）-1）
+）（
+	set,__y,（calc,（（（A0）%400）+400）%400）
+）（
+	set,__scale,31
+	 （when,（__y）%4==0&&（__y）%100!=0||（__y）%400==0,29,28）
+	 31 30 31 30 31 31 30 31 30 31
+）（
+	nop,（split,（__scale）, ）
+）（
+	set,__days,0
+）（
+	times,（calc,（A1）-1）,（
+		set,__days,（calc,（__days）+（S（C0）））
+	）
+）（
+	set,__jst,（A6）
+）（
+	calc,（A3）*3600+（A4）*60+（A5）+（
+	365*（__py）+（__py）/4-（__py）/100+（__py）/400+（__days）+（A2）-719163
+	）*86400+(（__jst）)
+）（
+	set,__days,
+）（
+	set,__jst,
+）（
+	set,__py,
+）（
+	set,__scale,
+）（
+	set,__y,
+）

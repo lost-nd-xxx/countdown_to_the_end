@@ -1,0 +1,7 @@
+.git/,nonar,noupdate
+ghost/master/satori_savebackup.txt,nonar,noupdate
+ghost/master/satori_savedata.txt,nonar,noupdate
+ghost/master/profile/
+shell/master/profile/
+developer_options.txt,nonar,noupdate
+md5buildignore.txt,nonar,noupdate

@@ -1,0 +1,17 @@
+charset,UTF-8
+
+craftman,lost_nd_xxx
+craftmanw,ろすえん
+craftmanurl,https://lnx.flop.jp/
+
+name,終末までのカウントダウン
+type,ghost
+
+sakura.name,残された時間
+kero.name,おしまい
+
+icon,icondayo.ico
+shiori,satori.dll
+
+shiori.encoding,UTF-8
+shiori.forceencoding,UTF-8
