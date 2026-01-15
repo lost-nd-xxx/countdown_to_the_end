@@ -23,10 +23,6 @@ surface0
 {
 //--------------------------------土台
 element0,base,surface0.png,0,0
-//element1,overlay,p_rem.png,42,10
-//element2,overlay,p_dot.png,170,10
-//element3,overlay,p_per.png,234,10
-//element4,overlay,p_sec.png,266,74
 
 animation0.interval,runonce
 animation0.pattern0,overlay,111,0,0,0
