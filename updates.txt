@@ -1,14 +1,14 @@
 charset,UTF-8
 file,developer_options.txt3be2e18389b4cc0f0be042ad47cf86f5size=234date=2012-12-21T00:00:00
 file,ghost/master/descript.txt8f144c50df657fa26000f35452cf800asize=370date=2012-12-21T00:00:00
-file,ghost/master/dic01_base.txtca5a72b017cc22f9da78f09b439ddebcsize=4589date=2012-12-21T00:00:00
+file,ghost/master/dic01_base.txt3d44da315488cd24ee23a135d1653e13size=4675date=2012-12-21T00:00:00
 file,ghost/master/dic02_event.txte39c754aa6b4e827953cd27ff370132csize=1943date=2012-12-21T00:00:00
 file,ghost/master/icondayo.ico42a975d601bb4c71c0ec1112b344e24csize=1406date=2012-12-21T00:00:00
-file,ghost/master/satori.dlla25f79fbd92ffe5b2f39f106144c21ccsize=716800date=2012-12-21T00:00:00
+file,ghost/master/satori.dll4929dcec26fb65b45a2dad49e9991f7csize=716800date=2012-12-21T00:00:00
 file,ghost/master/satori_bootconf.txtf755e4251a9d8b06706839ca921627f2size=17date=2012-12-21T00:00:00
 file,ghost/master/satori_conf.txtfb110c6308aed92a1fb8d320add42184size=620date=2012-12-21T00:00:00
 file,install.txt3160fca1d692a19c39074d04473f96d0size=102date=2012-12-21T00:00:00
-file,readme.txt18d6eb0e3140861c1131cab1469bcef0size=173date=2012-12-21T00:00:00
+file,readme.txt65bb6cb14c3d42c12378e365699c727esize=625date=2012-12-21T00:00:00
 file,shell/master/dark/base.png0c614c2a9a300210875ebc873648d01esize=478date=2012-12-21T00:00:00
 file,shell/master/dark/dot.png4d4fcbae460649a194bb1e6b99cbdbebsize=103date=2012-12-21T00:00:00
 file,shell/master/dark/end.png5279dcabba053a3557c85639ee362ca0size=686date=2012-12-21T00:00:00
@@ -50,5 +50,5 @@ file,shell/master/menu_sidebar.pngcc01d40d02b11064b2c181cef152ce75size=84date
 file,shell/master/readme.txt0ae94e5661341f8649cf2b495c16917fsize=280date=2012-12-21T00:00:00
 file,shell/master/surface0.png62e48165557052774e8856939db656d2size=100date=2012-12-21T00:00:00
 file,shell/master/surface10.pngcc2f91dae86e28aa50088675cf290a1bsize=84date=2012-12-21T00:00:00
-file,shell/master/surfaces.txt7ea72df9693d8c59c915335c80072fe4size=13277date=2012-12-21T00:00:00
+file,shell/master/surfaces.txtbda419853715c8bc539355f001b46654size=13134date=2012-12-21T00:00:00
 file,thumbnail.pngc43d8900bdd062c03b9c4395f234d632size=164date=2012-12-21T00:00:00
